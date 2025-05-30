@@ -13,7 +13,6 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-      - run: npm install || true
       - run: echo "No build step for static HTML"
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
@@ -21,3 +20,5 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_ROZGAAR_BAZAAR }}'
           channelId: live
           projectId: rozgaar-bazaar-3m6am
+          target: default
+          entryPoint: .
