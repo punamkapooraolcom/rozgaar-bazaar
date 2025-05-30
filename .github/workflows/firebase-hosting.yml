@@ -10,15 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-      - run: echo "No build step for static HTML"
-      - uses: FirebaseExtended/action-hosting-deploy@v0
+
+      - name: Upload index.html to hosting
+        uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_ROZGAAR_BAZAAR }}'
           channelId: live
           projectId: rozgaar-bazaar-3m6am
-          target: default
-          entryPoint: .
+          entryPoint: .  # THIS is the key fix!
